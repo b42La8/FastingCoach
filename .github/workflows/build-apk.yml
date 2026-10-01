@@ -2,8 +2,6 @@ name: Build Android APK
 
 on:
   workflow_dispatch:
-  push:
-    branches: [ "main", "master" ]
 
 permissions:
   contents: read
@@ -28,10 +26,10 @@ jobs:
         with:
           packages: 'platform-tools platforms;android-36 build-tools;36.0.0'
 
-      - name: Set up Gradle 9.5
+      - name: Set up Gradle 8.13
         uses: gradle/actions/setup-gradle@v4
         with:
-          gradle-version: '9.5.0'
+          gradle-version: '8.13'
 
       - name: Build debug APK
         run: gradle --stacktrace --no-daemon :app:assembleDebug
